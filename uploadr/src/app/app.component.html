@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand"
+    href="#">Uploadr</a>
+</nav>
+
+<div class="container mt-4">
+  <div class="upload-wrapper p-4">
+    <div class="card">
+
+      <div class="card-header">
+        <input type="file"
+          appUploadrSelect
+          (fileSelected)="onFileSelected($event)"
+          multiple
+          name="uploadr"
+          id="file-selector">
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">Files for upload</h5>
+      </div>
+      <ul>
+        <li *ngFor="let file of filenames">{{ file }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
