@@ -23,17 +23,5 @@ export class UploadrSelectDirective {
   public onChange(): any {
     const files = this.element.nativeElement.files;
     this.fileSelected.emit(files);
-
-    console.log('this.element.nativeElement.attributes');
-    console.log(this.element.nativeElement.attributes);
-
-    // if (this.isEmptyAfterSelection()) {
-    //   console.log('Empty hit!');
-    //   this.element.nativeElement.value = '';
-    // }
   }
-
-  // public isEmptyAfterSelection(): boolean {
-  //   return !!this.element.nativeElement.attributes.multiple;
-  // }
 }

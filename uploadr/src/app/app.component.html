@@ -4,18 +4,24 @@
 </nav>
 
 <div class="container mt-4">
-  <div class="upload-wrapper p-4">
+  <div class="upload-wrapper">
     <div class="card">
 
       <div class="card-header">
+
         <div class="upload-actions">
-          <button class="btn btn-primary"
-            (click)="hiddenUploadSelect.click()">Select Files
+          <button class="btn btn-primary mr-2"
+            (click)="hiddenUploadSelect.click()">Add Files
+          </button>
+          <button class="btn btn-warning"
+            (click)="clearFiles()">Clear
           </button>
           <div class="spacer"></div>
-          <button class="btn btn-success">Upload</button>
+          <button class="btn btn-success"
+            (click)="uploadFiles()">Upload</button>
         </div>
-        <div class="upload-select">
+
+        <div style="display: none;">
           <input #hiddenUploadSelect
             type="file"
             appUploadrSelect
@@ -24,14 +30,20 @@
             name="uploadr"
             id="file-selector">
         </div>
+
       </div>
 
       <div class="card-body">
-        <h5 class="card-title">Files for upload</h5>
+        <h5 class="card-title">Files for upload:</h5>
+        <ul class="list-group">
+          <li *ngFor="let file of uploadqueue"
+            class="list-group-item d-flex justify-content-between align-items-center">
+            {{ file.name }}
+            <span class="cp badge">( {{ (file.size / 1024).toFixed(2) }} kB )</span>
+          </li>
+        </ul>
       </div>
-      <ul>
-        <li *ngFor="let file of filenames">{{ file }}</li>
-      </ul>
+
     </div>
   </div>
 </div>

@@ -6,14 +6,18 @@ import { Component, ElementRef } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  filenames: string[] = [];
+  uploadqueue: File[] = [];
 
   onFileSelected(filesdata) {
-    console.log(filesdata);
-    const files: File[] = [];
     Object.keys(filesdata).forEach(element => {
-      files.push(filesdata[element]);
+      this.uploadqueue.push(filesdata[element]);
     });
-    this.filenames = files.map(el => el.name);
+    console.log(this.uploadqueue);
   }
+
+  clearFiles() {
+    this.uploadqueue = [];
+  }
+
+  uploadFiles() {}
 }
