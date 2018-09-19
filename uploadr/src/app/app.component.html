@@ -8,12 +8,22 @@
     <div class="card">
 
       <div class="card-header">
-        <input type="file"
-          appUploadrSelect
-          (fileSelected)="onFileSelected($event)"
-          multiple
-          name="uploadr"
-          id="file-selector">
+        <div class="upload-actions">
+          <button class="btn btn-primary"
+            (click)="hiddenUploadSelect.click()">Select Files
+          </button>
+          <div class="spacer"></div>
+          <button class="btn btn-success">Upload</button>
+        </div>
+        <div class="upload-select">
+          <input #hiddenUploadSelect
+            type="file"
+            appUploadrSelect
+            (fileSelected)="onFileSelected($event)"
+            multiple
+            name="uploadr"
+            id="file-selector">
+        </div>
       </div>
 
       <div class="card-body">
