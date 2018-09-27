@@ -2,3 +2,16 @@
 .cp {
   cursor: pointer;
 }
+
+.flexbox {
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a[routerLink] {
+  cursor: pointer;
+  color: white;
+}

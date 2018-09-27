@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,36 +6,5 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  uploadqueue: File[] = [];
-
-  constructor(private http: HttpClient) {}
-
-  onFileSelected(filesdata) {
-    Object.keys(filesdata).forEach(element => {
-      this.uploadqueue.push(filesdata[element]);
-    });
-    console.log(this.uploadqueue);
-  }
-
-  clearFiles() {
-    this.uploadqueue = [];
-  }
-
-  uploadFiles() {
-    if (this.uploadqueue.length > 0) {
-      this.uploadqueue.forEach((file: File) => {
-        const formData: FormData = new FormData();
-        formData.append('uploadfile[]', file, file.name);
-        const headers = new HttpHeaders({
-          'Content-Type': 'multipart/form-data',
-          Accept: 'application/json'
-        });
-        this.http
-          .post<any>('api_url_goes_here', formData, {
-            headers
-          })
-          .subscribe(console.log, console.log);
-      });
-    }
-  }
+  constructor() {}
 }

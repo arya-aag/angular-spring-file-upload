@@ -1,7 +1,7 @@
-.upload-actions {
-  display: flex;
+a[routerLink] {
+  margin-left: 1rem;
 }
 
-.spacer {
-  flex: 1 1 auto;
+a[routerLink].active {
+  text-decoration: underline;
 }

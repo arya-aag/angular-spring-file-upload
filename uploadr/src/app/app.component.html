@@ -1,49 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand"
     href="#">Uploadr</a>
+  <div class="spacer"></div>
+  <a routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}">Custom</a>
+  <a routerLink="/valor"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}">Valor</a>
 </nav>
 
 <div class="container mt-4">
-  <div class="upload-wrapper">
-    <div class="card">
-
-      <div class="card-header">
-
-        <div class="upload-actions">
-          <button class="btn btn-primary mr-2"
-            (click)="hiddenUploadSelect.click()">Add Files
-          </button>
-          <button class="btn btn-warning"
-            (click)="clearFiles()">Clear
-          </button>
-          <div class="spacer"></div>
-          <button class="btn btn-success"
-            (click)="uploadFiles()">Upload</button>
-        </div>
-
-        <div style="display: none;">
-          <input #hiddenUploadSelect
-            type="file"
-            appUploadrSelect
-            (fileSelected)="onFileSelected($event)"
-            multiple
-            name="uploadr"
-            id="file-selector">
-        </div>
-
-      </div>
-
-      <div class="card-body">
-        <h5 class="card-title">Files for upload:</h5>
-        <ul class="list-group">
-          <li *ngFor="let file of uploadqueue"
-            class="list-group-item d-flex justify-content-between align-items-center">
-            {{ file.name }}
-            <span class="cp badge">( {{ (file.size / 1024).toFixed(2) }} kB )</span>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>

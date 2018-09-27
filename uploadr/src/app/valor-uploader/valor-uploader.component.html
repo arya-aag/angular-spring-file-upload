@@ -1,0 +1,88 @@
+<div class="upload-wrapper">
+  <div class="card">
+
+    <div class="card-header">
+
+      <div style="display: none;">
+        <input #hiddenUploadSelect
+          type="file"
+          ng2FileSelect
+          [uploader]="uploader"
+          multiple />
+      </div>
+
+      <div class="flexbox">
+        <button class="btn btn-primary mr-2"
+          (click)="hiddenUploadSelect.click()">Add Files
+        </button>
+        <button class="btn btn-warning"
+          (click)="clearFiles()">Clear
+        </button>
+        <div class="spacer"></div>
+        <button type="button"
+          class="btn btn-success btn-s"
+          (click)="uploader.uploadAll()">
+          <span class="glyphicon glyphicon-upload"></span> Upload all
+        </button>
+      </div>
+
+    </div>
+
+    <div class="card-header">
+
+      <div class="flexbox"
+        style="align-items: center;">
+        <label class="mb-0 mr-1"
+          for="something">Param: </label>
+        <input class="form-control"
+          type="text"
+          style="width: 320px; display: inline-block"
+          name="something"
+          id="something"
+          [(ngModel)]="text">
+        <div class="spacer"></div>
+        <button type="button"
+          class="btn btn-success btn-s"
+          (click)="uploadOneByOne()">Upload One By One</button>
+        <button type="button"
+          class="btn btn-success btn-s ml-2"
+          (click)="uploadFilenameChange()">Upload after Changing
+          Filename</button>
+      </div>
+
+    </div>
+
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="50%">Name</th>
+            <th>Size</th>
+            <th>Progress</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of uploader.queue">
+            <td><strong>{{ item?.file?.name }}</strong></td>
+            <td nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+            <td>
+              <div class="progress"
+                style="margin-bottom: 0;">
+                <div class="progress-bar"
+                  role="progressbar"
+                  [ngStyle]="{ 'width': item.progress + '%' }"></div>
+              </div>
+            </td>
+            <td class="text-center">
+              <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+              <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+              <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
